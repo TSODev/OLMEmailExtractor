@@ -12,8 +12,6 @@ import java.nio.file.Files
 import java.nio.file.Paths
 import javax.xml.parsers.DocumentBuilderFactory
 
-val FILE_REPOSITORY = "/Volumes/TOSHIBA 1T/Record Mgmt/Outlook Archive 2016-2.olm Folder/Local/com.microsoft.__Messages/Aug2Dec2018/"
-val OUTPUT_FILE = "/Users/thierry/Desktop/OLMAddresses.csv"
 
 object EMAIL_FROM: XMLZone("OPFMessageCopyFromAddresses","From" )
 object EMAIL_REPLY: XMLZone("OPFMessageCopyReplyToAddresses","ReplyTo" )
@@ -42,9 +40,12 @@ fun main(args: Array<String>) = mainBody {
         val source = InFolder.substringAfter('=')
         val dest = OutFile.substringAfter('=')
 
+        println("===================================================")
+        println(" OLMEmailExtractor - TSODev Nov 2018 - version 1.0 ")
+        println("===================================================")
         println("Source : ${source}")
         println("Destination : ${dest}")
-        println("-----")
+        println("---------------------------------------------------")
 
         val CSV_File_Path = dest
         val writer = Files.newBufferedWriter(Paths.get(CSV_File_Path))
@@ -57,14 +58,14 @@ fun main(args: Array<String>) = mainBody {
         println("Working on so many files that you need to be patient...")
         println("I will create a CSV file with the result at the end of this process.")
 
-        println("[1 of 2] Extracting Email Addresses from the files")
+        println("[1 of 2] Extracting Email Addresses from the files (InFolder)")
         for (file in File(source).walk()) {
             if (file.extension == "xml") {
                 AddToListIfNotAlreadyIn(EmailAddressList, ExtractEmailAddressesFromXmlFile(file.absolutePath))
             }
         }
 
-        println("[2 of 2 ] Writing Addresses in CSV file")
+        println("[2 of 2 ] Writing Addresses in CSV file (OutFile)")
 //    val FilteredEmailAddressList = EmailAddressList.filter { it.domain == "bmc"}
         val FilteredEmailAddressList = EmailAddressList.filter { true }
         for (email in FilteredEmailAddressList) {
