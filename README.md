@@ -10,7 +10,7 @@ Email Addresses are extracted from the following tags:
 + Copy To
 
 CSV output provides :
-domain , email address ; tag
+domain , email address , tag
 
 -----
 
