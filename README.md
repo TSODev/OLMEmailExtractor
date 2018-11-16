@@ -15,6 +15,6 @@ domain , email address ; tag
 -----
 
 usage :
-**OLMEmailExtractor** InFolder="*Source Files Folder*" OutFile="*Output CSV filename*"
+java -jar **OLMEmailExtractor.jar** InFolder="*Source Files Folder*" OutFile="*Output CSV filename*"
 
 
