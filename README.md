@@ -9,6 +9,8 @@ Email Addresses are extracted from the following tags:
 + Sender
 + Copy To
 
+duplicates (with a same tag) are removed
+
 CSV output provides :
 domain , email address , tag
 
